@@ -24,7 +24,7 @@ const Header = () => {
           <div className={`opacity-0 ${isVisible ? 'animate-slide-down' : ''}`} style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
             <div className="text-xl font-medium flex items-center space-x-2">
               <span className="w-3 h-3 bg-black rounded-full"></span>
-              <span>Team</span>
+              <span>G3</span>
             </div>
           </div>
           
@@ -42,13 +42,13 @@ const Header = () => {
 
       <div className="relative z-20 text-center max-w-5xl px-6">
         <div className={`opacity-0 ${isVisible ? 'animate-slide-up' : ''}`} style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
-          <h1 className="font-display text-5xl md:text-7xl font-medium mb-6 leading-tight">
-            Meet the <span className="text-gradient">Team</span>
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-medium mb-6 leading-tight">
+            Meet the <span className="text-gradient">G3</span> Team
           </h1>
         </div>
         
         <div className={`opacity-0 ${isVisible ? 'animate-fade-in' : ''}`} style={{ animationDelay: '900ms', animationFillMode: 'forwards' }}>
-          <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-12">
+          <p className="text-gray-600 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8 md:mb-12">
             We're a diverse team of talented individuals working together to create exceptional experiences. Get to know the people behind the project.
           </p>
         </div>
@@ -56,7 +56,7 @@ const Header = () => {
         <div className={`opacity-0 ${isVisible ? 'animate-fade-in' : ''}`} style={{ animationDelay: '1100ms', animationFillMode: 'forwards' }}>
           <button 
             onClick={scrollToTeam}
-            className="inline-flex items-center px-6 py-3 rounded-full bg-black text-white hover:bg-gray-800 transition-colors"
+            className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-black text-white hover:bg-gray-800 transition-colors"
           >
             <span>Meet us</span>
             <ChevronDown className="ml-2 h-4 w-4 animate-bounce" />

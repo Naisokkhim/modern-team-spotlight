@@ -1,6 +1,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import TeamMember from './TeamMember';
+import { useIsMobile } from '../hooks/use-mobile';
 
 // Define the team members data
 const teamMembers = [
@@ -58,6 +59,7 @@ const teamMembers = [
 const TeamSection = () => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -82,22 +84,22 @@ const TeamSection = () => {
     <section 
       id="team-section" 
       ref={sectionRef}
-      className="py-20 px-6"
+      className="py-12 sm:py-20 px-4 sm:px-6"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 text-center">
+        <div className="mb-10 sm:mb-16 text-center">
           <div className={`inline-block px-4 py-1.5 mb-3 text-sm font-medium bg-black/5 rounded-full opacity-0 ${isIntersecting ? 'animate-fade-in' : ''}`} style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-            Our Talent
+            G3 Talent
           </div>
-          <h2 className={`text-3xl md:text-4xl font-display font-medium mb-4 opacity-0 ${isIntersecting ? 'animate-fade-in' : ''}`} style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl font-display font-medium mb-4 opacity-0 ${isIntersecting ? 'animate-fade-in' : ''}`} style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
             Meet our exceptional team
           </h2>
-          <p className={`text-gray-600 max-w-2xl mx-auto opacity-0 ${isIntersecting ? 'animate-fade-in' : ''}`} style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
+          <p className={`text-gray-600 max-w-2xl mx-auto text-sm sm:text-base opacity-0 ${isIntersecting ? 'animate-fade-in' : ''}`} style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
             Each member brings unique skills and perspectives to our collaborative environment, driving innovation and excellence in everything we do.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {teamMembers.map((member, index) => (
             <TeamMember
               key={member.id}
@@ -106,7 +108,7 @@ const TeamSection = () => {
               role={member.role}
               imageSrc={member.imageSrc}
               description={member.description}
-              delay={(index + 1) * 150}
+              delay={(index + 1) * (isMobile ? 100 : 150)}
             />
           ))}
         </div>
