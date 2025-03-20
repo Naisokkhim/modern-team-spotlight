@@ -9,49 +9,49 @@ const teamMembers = [
     id: 1,
     name: "Sophea",
     role: "UI/UX Designer",
-    imageSrc: "public/lovable-uploads/506e7f20-e7ef-4baa-b2d9-2876bec99397.png",
+    imageSrc: "/lovable-uploads/506e7f20-e7ef-4baa-b2d9-2876bec99397.png",
     description: "Creative designer with an eye for detail and user-centered approaches to solving complex problems."
   },
   {
     id: 2,
     name: "Virak",
     role: "Frontend Developer",
-    imageSrc: "public/lovable-uploads/16aff451-53d6-411c-a257-b123c4fed101.png",
+    imageSrc: "/lovable-uploads/16aff451-53d6-411c-a257-b123c4fed101.png",
     description: "Passionate developer who loves creating clean and efficient code to build amazing user experiences."
   },
   {
     id: 3,
     name: "Srey Pich",
     role: "Project Manager",
-    imageSrc: "public/lovable-uploads/e299ed61-8883-46ce-9cac-5fb02e0c2f33.png", 
+    imageSrc: "/lovable-uploads/e299ed61-8883-46ce-9cac-5fb02e0c2f33.png", 
     description: "Organized and detail-oriented project manager who ensures our team delivers quality work on time."
   },
   {
     id: 4,
     name: "Dara",
     role: "Backend Developer",
-    imageSrc: "public/lovable-uploads/fa3f123f-7dac-4786-8363-6620431b2a9f.png",
+    imageSrc: "/lovable-uploads/fa3f123f-7dac-4786-8363-6620431b2a9f.png",
     description: "Experienced backend developer with expertise in creating scalable and secure server-side solutions."
   },
   {
     id: 5,
     name: "Sokha",
     role: "Data Analyst",
-    imageSrc: "public/lovable-uploads/ab0fa77d-6c60-4c10-9bff-a021f7c7dff2.png",
+    imageSrc: "/lovable-uploads/ab0fa77d-6c60-4c10-9bff-a021f7c7dff2.png",
     description: "Analytical thinker who transforms complex data into meaningful insights to drive business decisions."
   },
   {
     id: 6,
     name: "Chanry",
     role: "Content Strategist",
-    imageSrc: "public/lovable-uploads/9f1335af-814e-4dfe-8621-608b40fb846d.png",
+    imageSrc: "/lovable-uploads/9f1335af-814e-4dfe-8621-608b40fb846d.png",
     description: "Creative writer and strategist who helps craft compelling narratives that engage and inform our audience."
   },
   {
     id: 7,
     name: "Vuthy",
     role: "DevOps Engineer",
-    imageSrc: "public/lovable-uploads/83a709f7-5ee1-40cb-a47b-9a695784e33e.png", 
+    imageSrc: "/lovable-uploads/83a709f7-5ee1-40cb-a47b-9a695784e33e.png", 
     description: "Technical specialist focused on infrastructure, deployment automation and maintaining system reliability."
   }
 ];
