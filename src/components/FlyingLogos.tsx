@@ -13,6 +13,7 @@ interface Logo {
   rotation: number;
   rotationSpeed: number;
   label: string;
+  color: string;
 }
 
 const FlyingLogos = () => {
@@ -30,6 +31,17 @@ const FlyingLogos = () => {
     
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
+    
+    // Define vibrant colors for logos
+    const colors = [
+      "#FF6B6B", // Coral red
+      "#4ECDC4", // Turquoise 
+      "#FFD166", // Yellow
+      "#6A0572", // Purple
+      "#1A936F", // Green
+      "#3D5A80", // Navy blue
+      "#F72585", // Pink
+    ];
     
     // Create initial logos with better distribution
     const totalLogos = 7;
@@ -59,12 +71,13 @@ const FlyingLogos = () => {
         Icon: item.Icon,
         x,
         y,
-        size: 32 + Math.random() * 48,
-        speed: 0.05 + Math.random() * 0.1, // Even slower speed (0.05-0.15)
-        opacity: 0.6 + Math.random() * 0.3, // Slightly higher opacity for better visibility
+        size: 40 + Math.random() * 50, // Slightly larger
+        speed: 0.01 + Math.random() * 0.03, // MUCH slower speed (0.01-0.04)
+        opacity: 0.8 + Math.random() * 0.2, // Higher opacity for better visibility
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 0.2, // Even slower rotation
-        label: item.label
+        rotationSpeed: (Math.random() - 0.5) * 0.1, // Even slower rotation
+        label: item.label,
+        color: colors[index] // Assign a vibrant color
       };
     });
     
@@ -120,8 +133,8 @@ const FlyingLogos = () => {
           }}
         >
           <div className="flex flex-col items-center">
-            <logo.Icon size={logo.size} className="text-gray-400" />
-            <span className="text-sm text-gray-400 mt-1 opacity-80 font-medium">{logo.label}</span>
+            <logo.Icon size={logo.size} style={{ color: logo.color }} />
+            <span className="text-base mt-2 font-medium" style={{ color: logo.color }}>{logo.label}</span>
           </div>
         </div>
       ))}
