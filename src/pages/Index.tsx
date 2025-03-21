@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Header from '../components/Header';
 import TeamSection from '../components/TeamSection';
 import Footer from '../components/Footer';
+import FlyingLogos from '../components/FlyingLogos';
 
 const Index = () => {
   useEffect(() => {
@@ -15,7 +16,8 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      <FlyingLogos />
       <Header />
       <main>
         <TeamSection />

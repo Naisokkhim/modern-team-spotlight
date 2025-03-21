@@ -48,7 +48,7 @@ const Header = () => {
         </div>
         
         <div className={`opacity-0 ${isVisible ? 'animate-fade-in' : ''}`} style={{ animationDelay: '900ms', animationFillMode: 'forwards' }}>
-          <p className="text-gray-600 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8 md:mb-12">
+          <p className="text-gray-600 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8 md:mb-12 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-lg">
             We're a diverse team of talented individuals working together to create exceptional experiences. Get to know the people behind the project.
           </p>
         </div>
