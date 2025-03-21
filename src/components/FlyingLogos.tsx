@@ -45,11 +45,11 @@ const FlyingLogos = () => {
       Icon: item.Icon,
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight * 0.8,
-      size: 24 + Math.random() * 36,
-      speed: 0.2 + Math.random() * 0.4,
-      opacity: 0.2 + Math.random() * 0.3,
+      size: 32 + Math.random() * 48, // Increased size range from 24-60 to 32-80
+      speed: 0.1 + Math.random() * 0.2, // Decreased speed from 0.2-0.6 to 0.1-0.3
+      opacity: 0.5 + Math.random() * 0.4, // Increased opacity from 0.2-0.5 to 0.5-0.9
       rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() - 0.5) * 0.5,
+      rotationSpeed: (Math.random() - 0.5) * 0.3, // Decreased rotation speed
       label: item.label
     }));
     
@@ -105,8 +105,8 @@ const FlyingLogos = () => {
           }}
         >
           <div className="flex flex-col items-center">
-            <logo.Icon size={logo.size} className="text-gray-300" />
-            <span className="text-xs text-gray-300 mt-1 opacity-60">{logo.label}</span>
+            <logo.Icon size={logo.size} className="text-gray-400" /> {/* Changed from text-gray-300 to text-gray-400 */}
+            <span className="text-sm text-gray-400 mt-1 opacity-80 font-medium">{logo.label}</span> {/* Enhanced text visibility */}
           </div>
         </div>
       ))}
