@@ -8,7 +8,7 @@ interface Logo {
   x: number;
   y: number;
   size: number;
-  speed: number;
+  speedY: number; // Changed from speed to speedY for vertical movement
   opacity: number;
   rotation: number;
   rotationSpeed: number;
@@ -43,8 +43,8 @@ const FlyingLogos = () => {
       "#F72585", // Pink
     ];
     
-    // Create initial logos with better distribution
-    const totalLogos = 7;
+    // Create logos with better distribution across the entire screen
+    const totalLogos = 10; // Increasing number of logos for better coverage
     const initialLogos = [
       { Icon: Code, label: 'JavaScript' },
       { Icon: FileCode, label: 'React' },
@@ -53,31 +53,26 @@ const FlyingLogos = () => {
       { Icon: Database, label: 'SQL' },
       { Icon: Blocks, label: 'Node.js' },
       { Icon: Gitlab, label: 'GraphQL' },
+      { Icon: Code, label: 'TypeScript' },
+      { Icon: FileCode, label: 'Vue' },
+      { Icon: Blocks, label: 'Angular' },
     ].map((item, index) => {
-      // Calculate position to ensure better distribution across the screen
-      // Divide the screen into sections and place logos more evenly
-      const sectionWidth = window.innerWidth / Math.ceil(totalLogos / 2);
-      const sectionHeight = window.innerHeight / Math.ceil(totalLogos / 2);
-      
-      const sectionX = index % Math.ceil(totalLogos / 2);
-      const sectionY = Math.floor(index / Math.ceil(totalLogos / 2));
-      
-      // Add some randomness within each section
-      const x = (sectionX * sectionWidth) + (Math.random() * sectionWidth * 0.8);
-      const y = (sectionY * sectionHeight) + (Math.random() * sectionHeight * 0.8);
+      // Distribute logos more evenly across the entire screen
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight * 0.5; // Start logos in top half of screen
       
       return {
         id: index,
         Icon: item.Icon,
         x,
         y,
-        size: 40 + Math.random() * 50, // Slightly larger
-        speed: 0.01 + Math.random() * 0.03, // MUCH slower speed (0.01-0.04)
-        opacity: 0.8 + Math.random() * 0.2, // Higher opacity for better visibility
+        size: 40 + Math.random() * 60, // Slightly larger
+        speedY: 0.003 + Math.random() * 0.008, // Extremely slow vertical speed
+        opacity: 0.7 + Math.random() * 0.3, // Higher opacity for better visibility
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 0.1, // Even slower rotation
+        rotationSpeed: (Math.random() - 0.5) * 0.05, // Even slower rotation
         label: item.label,
-        color: colors[index] // Assign a vibrant color
+        color: colors[index % colors.length] // Assign a vibrant color
       };
     });
     
@@ -94,11 +89,11 @@ const FlyingLogos = () => {
     // Animation loop
     const animationFrame = requestAnimationFrame(function animate() {
       setLogos(prevLogos => prevLogos.map(logo => {
-        // Move logo
-        let x = logo.x + logo.speed;
+        // Move logo vertically (top to bottom)
+        let y = logo.y + logo.speedY;
         // Reset position if logo goes off-screen
-        if (x > dimensions.width + 100) {
-          x = -100;
+        if (y > dimensions.height + 100) {
+          y = -100;
         }
         
         // Rotate logo
@@ -106,7 +101,7 @@ const FlyingLogos = () => {
         
         return {
           ...logo,
-          x,
+          y,
           rotation
         };
       }));
@@ -120,7 +115,7 @@ const FlyingLogos = () => {
   }, [logos, dimensions]);
   
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-[-1]"> {/* Added z-[-1] to position behind content */}
       {logos.map(logo => (
         <div
           key={logo.id}

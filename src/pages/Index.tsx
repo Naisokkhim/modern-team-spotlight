@@ -18,12 +18,14 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       <FlyingLogos />
-      <Header />
-      <main>
-        <TeamSection />
-        {/* Additional sections can be added here */}
-      </main>
-      <Footer />
+      <div className="relative z-10"> {/* Added wrapper with z-10 to keep content above the logos */}
+        <Header />
+        <main>
+          <TeamSection />
+          {/* Additional sections can be added here */}
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
