@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { Code, Blocks, FileCode, Browser, Github, Gitlab, Database } from 'lucide-react';
+import { Code, Blocks, FileCode, Monitor, Github, Gitlab, Database } from 'lucide-react';
 
 interface Logo {
   id: number;
@@ -12,6 +12,7 @@ interface Logo {
   opacity: number;
   rotation: number;
   rotationSpeed: number;
+  label: string;
 }
 
 const FlyingLogos = () => {
@@ -34,7 +35,7 @@ const FlyingLogos = () => {
     const initialLogos = [
       { Icon: Code, label: 'JavaScript' },
       { Icon: FileCode, label: 'React' },
-      { Icon: Browser, label: 'HTML/CSS' },
+      { Icon: Monitor, label: 'HTML/CSS' }, // Changed Browser to Monitor
       { Icon: Github, label: 'Git' },
       { Icon: Database, label: 'SQL' },
       { Icon: Blocks, label: 'Node.js' },
