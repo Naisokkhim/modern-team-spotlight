@@ -31,27 +31,42 @@ const FlyingLogos = () => {
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     
-    // Create initial logos
+    // Create initial logos with better distribution
+    const totalLogos = 7;
     const initialLogos = [
       { Icon: Code, label: 'JavaScript' },
       { Icon: FileCode, label: 'React' },
-      { Icon: Monitor, label: 'HTML/CSS' }, // Changed Browser to Monitor
+      { Icon: Monitor, label: 'HTML/CSS' },
       { Icon: Github, label: 'Git' },
       { Icon: Database, label: 'SQL' },
       { Icon: Blocks, label: 'Node.js' },
       { Icon: Gitlab, label: 'GraphQL' },
-    ].map((item, index) => ({
-      id: index,
-      Icon: item.Icon,
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight * 0.8,
-      size: 32 + Math.random() * 48, // Increased size range from 24-60 to 32-80
-      speed: 0.1 + Math.random() * 0.2, // Decreased speed from 0.2-0.6 to 0.1-0.3
-      opacity: 0.5 + Math.random() * 0.4, // Increased opacity from 0.2-0.5 to 0.5-0.9
-      rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() - 0.5) * 0.3, // Decreased rotation speed
-      label: item.label
-    }));
+    ].map((item, index) => {
+      // Calculate position to ensure better distribution across the screen
+      // Divide the screen into sections and place logos more evenly
+      const sectionWidth = window.innerWidth / Math.ceil(totalLogos / 2);
+      const sectionHeight = window.innerHeight / Math.ceil(totalLogos / 2);
+      
+      const sectionX = index % Math.ceil(totalLogos / 2);
+      const sectionY = Math.floor(index / Math.ceil(totalLogos / 2));
+      
+      // Add some randomness within each section
+      const x = (sectionX * sectionWidth) + (Math.random() * sectionWidth * 0.8);
+      const y = (sectionY * sectionHeight) + (Math.random() * sectionHeight * 0.8);
+      
+      return {
+        id: index,
+        Icon: item.Icon,
+        x,
+        y,
+        size: 32 + Math.random() * 48,
+        speed: 0.05 + Math.random() * 0.1, // Even slower speed (0.05-0.15)
+        opacity: 0.6 + Math.random() * 0.3, // Slightly higher opacity for better visibility
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 0.2, // Even slower rotation
+        label: item.label
+      };
+    });
     
     setLogos(initialLogos);
     
@@ -105,8 +120,8 @@ const FlyingLogos = () => {
           }}
         >
           <div className="flex flex-col items-center">
-            <logo.Icon size={logo.size} className="text-gray-400" /> {/* Changed from text-gray-300 to text-gray-400 */}
-            <span className="text-sm text-gray-400 mt-1 opacity-80 font-medium">{logo.label}</span> {/* Enhanced text visibility */}
+            <logo.Icon size={logo.size} className="text-gray-400" />
+            <span className="text-sm text-gray-400 mt-1 opacity-80 font-medium">{logo.label}</span>
           </div>
         </div>
       ))}
