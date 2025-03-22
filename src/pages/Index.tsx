@@ -18,7 +18,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       <FlyingLogos />
-      <div className="relative z-10"> {/* Added wrapper with z-10 to keep content above the logos */}
+      <div className="relative z-10"> {/* Keeping content wrapper with higher z-index */}
         <Header />
         <main>
           <TeamSection />
