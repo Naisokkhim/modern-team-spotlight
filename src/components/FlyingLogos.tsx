@@ -64,20 +64,17 @@ const FlyingLogos = () => {
     ];
     
     const initialLogos = iconSets.map((item, index) => {
-      // Distribute logos across the entire screen
-      // Use grid-like positioning for more even distribution
+      // Distribute logos evenly across the screen width
       const columns = 4;
-      const rows = 3;
       const column = index % columns;
-      const row = Math.floor(index / columns) % rows;
       
-      // Calculate base position plus some randomness
+      // Calculate base position for even width distribution
       const xBase = (column / columns) * window.innerWidth;
-      const yBase = (row / rows) * window.innerHeight;
+      // Start all logos at or slightly above the top of the screen
+      const y = Math.random() * -300; // Start above viewport for staggered entry
       
-      // Add randomness within the grid cell
+      // Add randomness within the grid cell for x position
       const x = xBase + (Math.random() * (window.innerWidth / columns / 2));
-      const y = yBase + (Math.random() * (window.innerHeight / rows / 2));
       
       return {
         id: index,
@@ -85,10 +82,10 @@ const FlyingLogos = () => {
         x,
         y,
         size: 50 + Math.random() * 70, // Larger size for better visibility
-        speedY: 0.001 + Math.random() * 0.003, // Extremely slow vertical speed
+        speedY: 0.0005 + Math.random() * 0.0015, // Extremely slow vertical speed (reduced by half)
         opacity: 0.9, // Higher opacity for better visibility
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 0.02, // Very slow rotation
+        rotationSpeed: (Math.random() - 0.5) * 0.01, // Very slow rotation
         label: item.label,
         color: colors[index % colors.length] // Assign vibrant colors
       };
@@ -107,7 +104,7 @@ const FlyingLogos = () => {
     // Animation loop
     const animationFrame = requestAnimationFrame(function animate() {
       setLogos(prevLogos => prevLogos.map(logo => {
-        // Move logo vertically (top to bottom) very slowly
+        // Move logo vertically (top to bottom) extremely slowly
         let y = logo.y + logo.speedY;
         
         // Reset position if logo goes off-screen
@@ -134,7 +131,7 @@ const FlyingLogos = () => {
   }, [logos, dimensions]);
   
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0"> {/* Changed z-index to 0 */}
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
       {logos.map(logo => (
         <div
           key={logo.id}
