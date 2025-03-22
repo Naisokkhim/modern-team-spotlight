@@ -82,10 +82,10 @@ const FlyingLogos = () => {
         x,
         y,
         size: 50 + Math.random() * 70, // Larger size for better visibility
-        speedY: 0.0005 + Math.random() * 0.0015, // Extremely slow vertical speed (reduced by half)
+        speedY: 0.00008 + Math.random() * 0.00016, // Extremely slow vertical speed (reduced dramatically)
         opacity: 0.9, // Higher opacity for better visibility
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 0.01, // Very slow rotation
+        rotationSpeed: (Math.random() - 0.5) * 0.005, // Very slow rotation
         label: item.label,
         color: colors[index % colors.length] // Assign vibrant colors
       };
